@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductEditComponent implements OnInit {
 
   productId! : number  ; 
-  productFormGroup!: FormGroup ;
+  productFormGroup?: FormGroup ;
   submitted: boolean = false ; 
   constructor(private activatedRoute : ActivatedRoute, 
               private productService: ProductsService, 
@@ -43,6 +43,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   OnUpdatePoduct(){
+    this.submitted=true; 
+    if(this.productFormGroup?.invalid)return;
     this.productService.updateProduct(this.productFormGroup?.value)
       .subscribe(data=>{ 
 

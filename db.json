@@ -13,15 +13,31 @@
       "name": "Printer",
       "price": 4300,
       "quantity": 100,
-      "selected": true,
-      "available": true
+      "selected": false,
+      "available": false
     },
     {
       "id": 3,
       "name": "Smartphone",
       "price": 124500,
       "quantity": 100,
-      "selected": false,
+      "selected": true,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "imprimante",
+      "price": 800,
+      "quantity": 55,
+      "selected": true,
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "souris",
+      "price": 48,
+      "quantity": 7,
+      "selected": true,
       "available": true
     }
   ]

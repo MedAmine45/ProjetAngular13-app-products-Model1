@@ -36,7 +36,7 @@ export class ProductsService {
     }
     deleteProduct(product:Product) : Observable<void>{
       let host = environment.host;
-      product.selected = !product.selected;
+      //product.selected = !product.selected;
       return this.http.delete<void>(host+"/products/"+product.id);
     }
     save(product:Product) : Observable<Product>{

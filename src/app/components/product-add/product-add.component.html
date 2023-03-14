@@ -16,7 +16,14 @@
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input type="number" class="form-control" formControlName="price">
+            <input type="number" class="form-control" formControlName="price" [ngClass]="{'is-invalid':submitted && productFormGroup.get('price')?.errors?.['required']} ">
+            <div *ngIf="submitted && productFormGroup.get('price')?.errors?.['required']" 
+            class="invalid-feedback"  >
+    <!-- <div *ngIf="productFormGroup.get('name')?.invalid">Name is required</div> -->
+    <div *ngIf="productFormGroup.get('price')?.errors?.['required']">
+        price is required.
+      </div>
+</div>
         </div>
         <div class="form-group">
             <label>Quantity</label>

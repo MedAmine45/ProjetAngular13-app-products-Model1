@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductAddComponent implements OnInit {
 
-  productFormGroup!: FormGroup ;
+  productFormGroup?: FormGroup ;
   submitted: boolean = false ;
   constructor(private fb:FormBuilder ,private productService: ProductsService) { }
 
@@ -28,8 +28,8 @@ export class ProductAddComponent implements OnInit {
     // console.log(this.productFormGroup)
     // console.log(this.productFormGroup.get('name')?.invalid)
     this.submitted=true; 
-    if(this.productFormGroup.invalid)return;
-    this.productService.save(this.productFormGroup!.value)
+    if(this.productFormGroup?.invalid)return;
+    this.productService.save(this.productFormGroup?.value)
       .subscribe(data=>{
         alert("Success Saving Product");
       })
