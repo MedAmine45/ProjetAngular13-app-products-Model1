@@ -4,7 +4,8 @@
     <td>{{product.price}}</td>
     <td>{{product.quantity}}</td>
     <td>{{product.selected}}</td>
-    <td>{{product.available}}</td>
+    <!-- <td>{{product.available}}</td> -->
+    <td><span [ngClass]="product.available?'fa fa-check text-success': '' " ></span></td>
     <td>
         <button  (click)="onSelect(product)" [ngClass]="product.selected ?'btn btn-outline-success':'btn btn-outline-danger'" >
             <span *ngIf="product.selected">unselect</span>

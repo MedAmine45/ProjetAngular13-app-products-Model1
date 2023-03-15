@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
+import { EventDriverService } from 'src/app/state/event.driver.service';
+import { ProductActionsTypes } from 'src/app/state/product.state';
 
 @Component({
   selector: 'app-product-edit',
@@ -16,7 +18,8 @@ export class ProductEditComponent implements OnInit {
   submitted: boolean = false ; 
   constructor(private activatedRoute : ActivatedRoute, 
               private productService: ProductsService, 
-              private fb:FormBuilder ) { 
+              private fb:FormBuilder ,
+              private eventDrivenService : EventDriverService) { 
   
   this.activatedRoute.paramMap
   .subscribe( (params: ParamMap) => {
@@ -47,6 +50,7 @@ export class ProductEditComponent implements OnInit {
     if(this.productFormGroup?.invalid)return;
     this.productService.updateProduct(this.productFormGroup?.value)
       .subscribe(data=>{ 
+        this.eventDrivenService.publishEvent({type: ProductActionsTypes.PRODUCT_UPDATED})
 
         alert("Success Product updated"); 
       })
